@@ -26,8 +26,10 @@ export default function HistoryView({ currentUser, applications, onCancelRequest
   // Filter applications
   const filteredPersonalRequests = personalRequests.filter(app => {
     const matchesStatus = filterStatus === 'All' || app.status === filterStatus;
-    const matchesSearch = app.reason.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          app.leaveType.toLowerCase().includes(searchTerm.toLowerCase());
+    const reasonStr = app.reason || '';
+    const typeStr = app.leaveType || '';
+    const matchesSearch = reasonStr.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          typeStr.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesStatus && matchesSearch;
   });
 

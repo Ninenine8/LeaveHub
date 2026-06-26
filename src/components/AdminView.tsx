@@ -704,9 +704,12 @@ export default function AdminView({
 
   // Filtered employees
   const filteredEmployees = users.filter(user => {
-    const matchesQuery = user.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         user.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         user.department.toLowerCase().includes(searchQuery.toLowerCase());
+    const nameStr = user.name || '';
+    const emailStr = user.email || '';
+    const deptStr = user.department || '';
+    const matchesQuery = nameStr.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         emailStr.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         deptStr.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesQuery;
   });
 

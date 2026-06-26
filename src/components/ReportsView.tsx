@@ -30,7 +30,8 @@ export default function ReportsView({ applications, users, balances, departments
   // Filtered dataset
   const filteredApps = applications.filter(app => {
     // Only report on approved (or we can report on all and let them see status)
-    const matchesSearch = app.userName.toLowerCase().includes(searchQuery.toLowerCase());
+    const nameStr = app.userName || '';
+    const matchesSearch = nameStr.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesDept = selectedDept === 'All' || app.department === selectedDept;
     const matchesType = selectedType === 'All' || app.leaveType === selectedType;
     
