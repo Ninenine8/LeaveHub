@@ -183,6 +183,18 @@ export default function App() {
       setAuditLogs(db.auditLogs);
       setHolidays(db.holidays);
       setDepartments(db.departments || []);
+
+      // Cache state in local storage to keep offline state synchronized on reload
+      saveData({
+        users: db.users,
+        balances: db.balances,
+        applications: db.applications,
+        settings: db.settings,
+        notifications: db.notifications,
+        auditLogs: db.auditLogs,
+        holidays: db.holidays,
+        departments: db.departments || []
+      });
     } catch (e) {
       console.error('Error connecting to server, falling back to local/static database:', e);
       // Try to fetch static database file fallback for Netlify static host

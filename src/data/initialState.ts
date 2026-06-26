@@ -48,15 +48,25 @@ export const loadData = () => {
   const holidays = localStorage.getItem(HOLIDAYS_KEY);
   const departments = localStorage.getItem(DEPARTMENTS_KEY);
 
+  const safeParse = (str: string | null, fallback: any) => {
+    if (!str) return fallback;
+    try {
+      return JSON.parse(str);
+    } catch (e) {
+      console.warn('Error parsing state from localStorage:', e);
+      return fallback;
+    }
+  };
+
   return {
-    users: users ? JSON.parse(users) : initialUsers,
-    balances: balances ? JSON.parse(balances) : initialBalances,
-    applications: applications ? JSON.parse(applications) : initialApplications,
-    settings: settings ? JSON.parse(settings) : initialSettings,
-    notifications: notifications ? JSON.parse(notifications) : initialNotifications,
-    auditLogs: auditLogs ? JSON.parse(auditLogs) : initialAuditLogs,
-    holidays: holidays ? JSON.parse(holidays) : [], // Will merge with Singapore initial list
-    departments: departments ? JSON.parse(departments) : []
+    users: safeParse(users, initialUsers),
+    balances: safeParse(balances, initialBalances),
+    applications: safeParse(applications, initialApplications),
+    settings: safeParse(settings, initialSettings),
+    notifications: safeParse(notifications, initialNotifications),
+    auditLogs: safeParse(auditLogs, initialAuditLogs),
+    holidays: safeParse(holidays, []), // Will merge with Singapore initial list
+    departments: safeParse(departments, [])
   };
 };
 
