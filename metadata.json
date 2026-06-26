@@ -1,0 +1,6 @@
+{
+  "name": "LeaveHub SG",
+  "description": "A professional, compliant leave management web application for small employers in Singapore with role-based access for Admins, Managers, and Employees.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

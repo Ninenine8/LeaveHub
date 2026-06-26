@@ -1,0 +1,269 @@
+{
+  "isSeeded": false,
+  "users": [
+    {
+      "id": "usr_admin_1782356515744",
+      "name": "LOH WEE HUI",
+      "email": "lohweehui@custodyplus.sg",
+      "role": "admin",
+      "department": "HR & Admin",
+      "joinDate": "2026-04-06",
+      "isActive": true,
+      "hasChildcareEligible": false,
+      "title": "Admin",
+      "type": "Full-time",
+      "employment_status": "Active",
+      "probation_required": true,
+      "probation_period_value": 3,
+      "probation_period_unit": "Months",
+      "probation_start_date": "2026-04-06",
+      "probation_end_date": "2026-07-05",
+      "confirmation_date": "2026-06-25",
+      "confirmation_status": "Confirmed",
+      "probation_extended": false,
+      "probation_extension_reason": "",
+      "passwordHash": "c12ec17dd6eca85c75cd8612c1d2d22452e3e64435053da0c3d6a704ed7c17e507a6a7a3b112fa3043aa851ce06715dc50848a25e5a62d4cc05dbc373f380922",
+      "salt": "81fd15bdd1a67b804b38feff1034e9bf"
+    }
+  ],
+  "balances": [
+    {
+      "userId": "usr_admin_1782356515744",
+      "annualEntitled": 9,
+      "annualCarriedForward": 0,
+      "annualUsed": 0,
+      "annualPending": 0,
+      "sickEntitled": 14,
+      "sickUsed": 0,
+      "sickPending": 0,
+      "childcareEntitled": 0,
+      "childcareUsed": 0,
+      "childcarePending": 0,
+      "unpaidUsed": 0,
+      "otherUsed": 0,
+      "leaveYear": 2026,
+      "annualEntitledSystem": 9.333333333333334,
+      "annualEntitledOverridden": false,
+      "completedMonths": 8,
+      "roundingRuleUsed": "nearest-whole",
+      "annualManualAdjustment": 0
+    }
+  ],
+  "applications": [],
+  "settings": {
+    "annualLeaveCarryForwardMax": 5,
+    "carryForwardExpiryMonth": 3,
+    "prorateNewJoiners": true,
+    "prorateRoundingRule": "nearest-whole",
+    "standardAnnualLeave": 14,
+    "standardSickLeave": 14,
+    "standardChildcareLeave": 6,
+    "companyName": "VcPlus Limited",
+    "grantMedicalOnConfirmation": "mom",
+    "customMedicalRule": "grant-5-sick"
+  },
+  "notifications": [],
+  "auditLogs": [
+    {
+      "id": "log_1782378487935",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Update Employee",
+      "details": "Updated details for LOH WEE HUI: Annual Leave Entitlement updated to 9 days, Manual Adjustment updated to 0 days, Confirmation Date changed from \"2026-07-06\" to \"2026-06-25\", Confirmation Status changed from \"On Probation\" to \"Confirmed\".",
+      "timestamp": "2026-06-25T09:08:07.935Z"
+    },
+    {
+      "id": "log_1782357317745",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Update Employee",
+      "details": "Updated details for LOH WEE HUI: Join Date changed from \"2026-06-25\" to \"2026-04-06\", Probation Period changed from \"N/A\" to \"3\", Probation Period Unit changed from \"N/A\" to \"Months\", Probation End Date changed from \"N/A\" to \"2026-07-05\", Confirmation Date changed from \"N/A\" to \"2026-07-06\", Confirmation Status changed from \"N/A\" to \"On Probation\", Employment Status changed from \"N/A\" to \"Active\".",
+      "timestamp": "2026-06-25T03:15:17.745Z"
+    },
+    {
+      "id": "log_1782356515745",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Company Setup",
+      "details": "First admin account created for VcPlus Limited: LOH WEE HUI (lohweehui@custodyplus.sg)",
+      "timestamp": "2026-06-25T03:01:55.745Z"
+    },
+    {
+      "id": "log_1782356537178",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Adjust Balances",
+      "details": "Manually adjusted leave entitlements for LOH WEE HUI. New AL entitled: 14, Carried: 0, Sick: 14.",
+      "timestamp": "2026-06-25T03:02:17.178Z"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2026-01-01",
+      "name": "New Year's Day"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Chinese New Year (Day 1)"
+    },
+    {
+      "date": "2026-02-18",
+      "name": "Chinese New Year (Day 2)"
+    },
+    {
+      "date": "2026-03-20",
+      "name": "Hari Raya Puasa"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Good Friday"
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Labour Day"
+    },
+    {
+      "date": "2026-05-27",
+      "name": "Hari Raya Haji"
+    },
+    {
+      "date": "2026-05-31",
+      "name": "Vesak Day"
+    },
+    {
+      "date": "2026-08-09",
+      "name": "National Day"
+    },
+    {
+      "date": "2026-08-10",
+      "name": "National Day (Sub Holiday)"
+    },
+    {
+      "date": "2026-11-08",
+      "name": "Deepavali"
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Christmas Day"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "New Year's Day"
+    },
+    {
+      "date": "2027-02-06",
+      "name": "Chinese New Year (Day 1)"
+    },
+    {
+      "date": "2027-02-07",
+      "name": "Chinese New Year (Day 2)"
+    },
+    {
+      "date": "2027-03-09",
+      "name": "Hari Raya Puasa"
+    },
+    {
+      "date": "2027-03-26",
+      "name": "Good Friday"
+    },
+    {
+      "date": "2027-05-01",
+      "name": "Labour Day"
+    },
+    {
+      "date": "2027-05-16",
+      "name": "Hari Raya Haji"
+    },
+    {
+      "date": "2027-05-20",
+      "name": "Vesak Day"
+    },
+    {
+      "date": "2027-08-09",
+      "name": "National Day"
+    },
+    {
+      "date": "2027-10-28",
+      "name": "Deepavali"
+    },
+    {
+      "date": "2027-12-25",
+      "name": "Christmas Day"
+    }
+  ],
+  "departments": [
+    "Engineering",
+    "HR & Admin",
+    "Sales",
+    "Finance",
+    "Marketing"
+  ],
+  "leaveTypes": [
+    {
+      "id": "lt_1",
+      "name": "Annual Leave",
+      "code": "annual",
+      "isPaid": true,
+      "requiresAttachment": false,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 14,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_2",
+      "name": "Sick Leave",
+      "code": "sick",
+      "isPaid": true,
+      "requiresAttachment": true,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 14,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_3",
+      "name": "Childcare Leave",
+      "code": "childcare",
+      "isPaid": true,
+      "requiresAttachment": false,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 6,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_4",
+      "name": "Unpaid Leave",
+      "code": "unpaid",
+      "isPaid": false,
+      "requiresAttachment": false,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 0,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_5",
+      "name": "Hospitalisation Leave",
+      "code": "hospitalisation",
+      "isPaid": true,
+      "requiresAttachment": true,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 60,
+      "allowHalfDay": false,
+      "isActive": true
+    },
+    {
+      "id": "lt_6",
+      "name": "Other Leave",
+      "code": "other",
+      "isPaid": false,
+      "requiresAttachment": false,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 0,
+      "allowHalfDay": true,
+      "isActive": true
+    }
+  ]
+}
