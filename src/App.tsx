@@ -97,18 +97,24 @@ export const getProbationStatusLabel = (user: User) => {
 };
 
 export default function App() {
+  // Sync load initial state on mount
+  const localDb = loadData();
+
   // Database States
-  const [users, setUsers] = useState<User[]>([]);
-  const [balances, setBalances] = useState<LeaveBalance[]>([]);
-  const [applications, setApplications] = useState<LeaveApplication[]>([]);
-  const [settings, setSettings] = useState<CompanySettings>({} as CompanySettings);
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
-  const [holidays, setHolidays] = useState<PublicHoliday[]>([]);
-  const [departments, setDepartments] = useState<Department[]>([]);
+  const [users, setUsers] = useState<User[]>(localDb.users);
+  const [balances, setBalances] = useState<LeaveBalance[]>(localDb.balances);
+  const [applications, setApplications] = useState<LeaveApplication[]>(localDb.applications);
+  const [settings, setSettings] = useState<CompanySettings>(localDb.settings);
+  const [notifications, setNotifications] = useState<Notification[]>(localDb.notifications);
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(localDb.auditLogs);
+  const [holidays, setHolidays] = useState<PublicHoliday[]>(localDb.holidays.length > 0 ? localDb.holidays : initialPublicHolidays);
+  const [departments, setDepartments] = useState<Department[]>(localDb.departments);
 
   // Language state
-  const [lang, setLang] = useState<'en' | 'zh'>(() => (localStorage.getItem('leavehub_lang') as 'en' | 'zh') || 'en');
+  const [lang, setLang] = useState<'en' | 'zh'>(() => {
+    const stored = localStorage.getItem('leavehub_lang');
+    return (stored === 'en' || stored === 'zh') ? stored : 'en';
+  });
   
   const toggleLanguage = () => {
     const nextLang = lang === 'en' ? 'zh' : 'en';
@@ -116,14 +122,17 @@ export default function App() {
     localStorage.setItem('leavehub_lang', nextLang);
   };
 
-  const t = translations[lang];
+  const t = translations[lang] || translations.en;
 
   // User Session States
   const [currentUser, setCurrentUser] = useState<User | null>(() => {
     const stored = localStorage.getItem('leavehub_session');
     if (stored) {
       try {
-        return JSON.parse(stored);
+        const u = JSON.parse(stored);
+        if (u && typeof u === 'object' && u.id && u.role) {
+          return u;
+        }
       } catch (e) {
         return null;
       }
