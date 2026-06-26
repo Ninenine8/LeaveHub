@@ -1,0 +1,572 @@
+{
+  "isSeeded": false,
+  "users": [
+    {
+      "id": "usr_admin_1782356515744",
+      "name": "LOH WEE HUI",
+      "email": "lohweehui@custodyplus.sg",
+      "role": "admin",
+      "department": "Marketing",
+      "joinDate": "2026-04-06",
+      "isActive": true,
+      "hasChildcareEligible": false,
+      "title": "Admin",
+      "type": "Full-time",
+      "employment_status": "Active",
+      "probation_required": true,
+      "probation_period_value": 3,
+      "probation_period_unit": "Months",
+      "probation_start_date": "2026-04-06",
+      "probation_end_date": "2026-06-25",
+      "confirmation_date": "2026-06-25",
+      "confirmation_status": "Confirmed",
+      "probation_extended": false,
+      "probation_extension_reason": "",
+      "departmentId": "dept_marketing",
+      "managerId": "usr_1782436733450",
+      "managerName": "Catherine Tang",
+      "passwordHash": "c12ec17dd6eca85c75cd8612c1d2d22452e3e64435053da0c3d6a704ed7c17e507a6a7a3b112fa3043aa851ce06715dc50848a25e5a62d4cc05dbc373f380922",
+      "salt": "81fd15bdd1a67b804b38feff1034e9bf"
+    },
+    {
+      "id": "usr_1782436517411",
+      "name": "Grace Yeo",
+      "email": "graceyeo@vcplus.sg",
+      "role": "employee",
+      "department": "Finance",
+      "departmentId": "dept_finance",
+      "joinDate": "2026-06-02",
+      "isActive": true,
+      "hasChildcareEligible": false,
+      "mobile": "",
+      "title": "Financial Controller",
+      "type": "Full-time",
+      "employment_status": "Active",
+      "probation_required": true,
+      "probation_period_value": 3,
+      "probation_period_unit": "Months",
+      "probation_start_date": "2026-06-02",
+      "probation_end_date": "2026-09-01",
+      "confirmation_date": "2026-09-02",
+      "confirmation_status": "On Probation",
+      "probation_extended": false,
+      "probation_extension_reason": "",
+      "first_login_at": "",
+      "last_login_at": "",
+      "managerId": "usr_1782436733450",
+      "managerName": "Catherine Tang",
+      "passwordHash": "48016c9c07ec5e26f563133e6ab11fefdb3707ace6bd7da226badca1f2bd7649585da514e93b53c79c48bcc3d759ce98f6aa1cb8ae4695e509111be66e7b3303",
+      "salt": "001ce4d6470183a01ad210b30bbb5eba"
+    },
+    {
+      "id": "usr_1782436733450",
+      "name": "Catherine Tang",
+      "email": "catherinetang@vcplus.sg",
+      "role": "manager",
+      "department": "Management",
+      "departmentId": "dept_mgmt",
+      "joinDate": "2024-01-01",
+      "isActive": true,
+      "hasChildcareEligible": false,
+      "mobile": "",
+      "title": "Executive Chair and CEO",
+      "type": "Full-time",
+      "employment_status": "Active",
+      "probation_required": true,
+      "probation_period_value": 3,
+      "probation_period_unit": "Months",
+      "probation_start_date": "2024-01-01",
+      "probation_end_date": "2024-03-31",
+      "confirmation_date": "2024-04-01",
+      "confirmation_status": "Confirmed",
+      "probation_extended": false,
+      "probation_extension_reason": "",
+      "first_login_at": "",
+      "last_login_at": "",
+      "passwordHash": "f17d2a27689c5a059255df63f8a1f5865cd69dac82e5c00e9951ca769c7bae6fa69bfc5ed7bb23beb044907ee69da3857b5dad0dd4171291eb60a66d3b200532",
+      "salt": "fe60aa6b48b9895c9b69ea66d20d3329"
+    },
+    {
+      "id": "usr_1782436890157",
+      "name": "Mark Wong",
+      "email": "markwong@vcplus.sg",
+      "role": "employee",
+      "department": "Finance",
+      "departmentId": "dept_finance",
+      "joinDate": "2024-01-01",
+      "isActive": true,
+      "hasChildcareEligible": false,
+      "managerId": "usr_1782436733450",
+      "managerName": "Catherine Tang",
+      "mobile": "",
+      "title": "Advisor",
+      "type": "Full-time",
+      "employment_status": "Active",
+      "probation_required": true,
+      "probation_period_value": 3,
+      "probation_period_unit": "Months",
+      "probation_start_date": "2024-01-01",
+      "probation_end_date": "2024-03-31",
+      "confirmation_date": "2024-04-01",
+      "confirmation_status": "Confirmed",
+      "probation_extended": false,
+      "probation_extension_reason": "",
+      "first_login_at": "",
+      "last_login_at": "",
+      "salt": "b279b7b39d538bb3573ddbeae729046d",
+      "passwordHash": "4e802117cfab73d1188385a112243ccf0283298d696dca303169d469b1f8662fe5a8e973fbf252c2663ae02b950278cdf8e224ab0cde22939b51b507e5f06776"
+    }
+  ],
+  "balances": [
+    {
+      "userId": "usr_admin_1782356515744",
+      "annualEntitled": 9,
+      "annualCarriedForward": 0,
+      "annualUsed": 0,
+      "annualPending": 0,
+      "sickEntitled": 14,
+      "sickUsed": 0,
+      "sickPending": 0,
+      "childcareEntitled": 0,
+      "childcareUsed": 0,
+      "childcarePending": 0,
+      "unpaidUsed": 0,
+      "otherUsed": 0,
+      "leaveYear": 2026,
+      "annualEntitledSystem": 9.333333333333334,
+      "annualEntitledOverridden": false,
+      "completedMonths": 8,
+      "roundingRuleUsed": "nearest-whole",
+      "annualManualAdjustment": 0
+    },
+    {
+      "userId": "usr_1782436517411",
+      "annualEntitled": 7,
+      "annualCarriedForward": 0,
+      "annualUsed": 0,
+      "annualPending": 0,
+      "sickEntitled": 14,
+      "sickUsed": 0,
+      "sickPending": 0,
+      "childcareEntitled": 0,
+      "childcareUsed": 0,
+      "childcarePending": 0,
+      "unpaidUsed": 0,
+      "otherUsed": 0,
+      "leaveYear": 2026,
+      "annualEntitledSystem": 7,
+      "annualEntitledOverridden": false,
+      "completedMonths": 6,
+      "roundingRuleUsed": "nearest-whole",
+      "annualManualAdjustment": 0
+    },
+    {
+      "userId": "usr_1782436733450",
+      "annualEntitled": 14,
+      "annualCarriedForward": 0,
+      "annualUsed": 0,
+      "annualPending": 0,
+      "sickEntitled": 14,
+      "sickUsed": 0,
+      "sickPending": 0,
+      "childcareEntitled": 0,
+      "childcareUsed": 0,
+      "childcarePending": 0,
+      "unpaidUsed": 0,
+      "otherUsed": 0
+    },
+    {
+      "userId": "usr_1782436890157",
+      "annualEntitled": 14,
+      "annualCarriedForward": 0,
+      "annualUsed": 0,
+      "annualPending": 0,
+      "sickEntitled": 14,
+      "sickUsed": 0,
+      "sickPending": 0,
+      "childcareEntitled": 0,
+      "childcareUsed": 0,
+      "childcarePending": 0,
+      "unpaidUsed": 0,
+      "otherUsed": 0
+    }
+  ],
+  "applications": [],
+  "settings": {
+    "annualLeaveCarryForwardMax": 5,
+    "carryForwardExpiryMonth": 3,
+    "prorateNewJoiners": true,
+    "prorateRoundingRule": "nearest-whole",
+    "standardAnnualLeave": 14,
+    "standardSickLeave": 14,
+    "standardChildcareLeave": 6,
+    "companyName": "VcPlus Limited",
+    "grantMedicalOnConfirmation": "mom",
+    "customMedicalRule": "grant-5-sick"
+  },
+  "notifications": [],
+  "auditLogs": [
+    {
+      "id": "log_1782436814859",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Employee department changed",
+      "details": "Changed department of LOH WEE HUI from \"HR & Admin\" to \"Marketing\".",
+      "timestamp": "2026-06-26T01:20:14.859Z"
+    },
+    {
+      "id": "log_1782436744086",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Update Employee",
+      "details": "Updated details for Grace Yeo: Annual Leave Entitlement updated to 7 days, Manual Adjustment updated to 0 days.",
+      "timestamp": "2026-06-26T01:19:04.086Z"
+    },
+    {
+      "id": "log_1782378487935",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Update Employee",
+      "details": "Updated details for LOH WEE HUI: Annual Leave Entitlement updated to 9 days, Manual Adjustment updated to 0 days, Confirmation Date changed from \"2026-07-06\" to \"2026-06-25\", Confirmation Status changed from \"On Probation\" to \"Confirmed\".",
+      "timestamp": "2026-06-25T09:08:07.935Z"
+    },
+    {
+      "id": "log_1782357317745",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Update Employee",
+      "details": "Updated details for LOH WEE HUI: Join Date changed from \"2026-06-25\" to \"2026-04-06\", Probation Period changed from \"N/A\" to \"3\", Probation Period Unit changed from \"N/A\" to \"Months\", Probation End Date changed from \"N/A\" to \"2026-07-05\", Confirmation Date changed from \"N/A\" to \"2026-07-06\", Confirmation Status changed from \"N/A\" to \"On Probation\", Employment Status changed from \"N/A\" to \"Active\".",
+      "timestamp": "2026-06-25T03:15:17.745Z"
+    },
+    {
+      "id": "log_1782356515745",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Company Setup",
+      "details": "First admin account created for VcPlus Limited: LOH WEE HUI (lohweehui@custodyplus.sg)",
+      "timestamp": "2026-06-25T03:01:55.745Z"
+    },
+    {
+      "id": "log_1782356537178",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Adjust Balances",
+      "details": "Manually adjusted leave entitlements for LOH WEE HUI. New AL entitled: 14, Carried: 0, Sick: 14.",
+      "timestamp": "2026-06-25T03:02:17.178Z"
+    },
+    {
+      "id": "log_1782436517411",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Create Employee",
+      "details": "Created new employee profile: Grace Yeo (Finance, EMPLOYEE) with starting 7 AL.",
+      "timestamp": "2026-06-26T01:15:17.411Z"
+    },
+    {
+      "id": "log_1782436733450",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Create Employee",
+      "details": "Created new employee profile: Catherine Tang (Management, MANAGER) with starting 14 AL.",
+      "timestamp": "2026-06-26T01:18:53.450Z"
+    },
+    {
+      "id": "log_1782436890157",
+      "actorId": "usr_admin_1782356515744",
+      "actorName": "LOH WEE HUI",
+      "action": "Create Employee",
+      "details": "Created new employee profile: Mark Wong (Finance, EMPLOYEE) with starting 14 AL.",
+      "timestamp": "2026-06-26T01:21:30.157Z"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2026-01-01",
+      "name": "New Year's Day"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Chinese New Year (Day 1)"
+    },
+    {
+      "date": "2026-02-18",
+      "name": "Chinese New Year (Day 2)"
+    },
+    {
+      "date": "2026-03-20",
+      "name": "Hari Raya Puasa"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Good Friday"
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Labour Day"
+    },
+    {
+      "date": "2026-05-27",
+      "name": "Hari Raya Haji"
+    },
+    {
+      "date": "2026-05-31",
+      "name": "Vesak Day"
+    },
+    {
+      "date": "2026-08-09",
+      "name": "National Day"
+    },
+    {
+      "date": "2026-08-10",
+      "name": "National Day (Sub Holiday)"
+    },
+    {
+      "date": "2026-11-08",
+      "name": "Deepavali"
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Christmas Day"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "New Year's Day"
+    },
+    {
+      "date": "2027-02-06",
+      "name": "Chinese New Year (Day 1)"
+    },
+    {
+      "date": "2027-02-07",
+      "name": "Chinese New Year (Day 2)"
+    },
+    {
+      "date": "2027-03-09",
+      "name": "Hari Raya Puasa"
+    },
+    {
+      "date": "2027-03-26",
+      "name": "Good Friday"
+    },
+    {
+      "date": "2027-05-01",
+      "name": "Labour Day"
+    },
+    {
+      "date": "2027-05-16",
+      "name": "Hari Raya Haji"
+    },
+    {
+      "date": "2027-05-20",
+      "name": "Vesak Day"
+    },
+    {
+      "date": "2027-08-09",
+      "name": "National Day"
+    },
+    {
+      "date": "2027-10-28",
+      "name": "Deepavali"
+    },
+    {
+      "date": "2027-12-25",
+      "name": "Christmas Day"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_finance",
+      "department_name": "Finance",
+      "department_code": "FIN",
+      "description": "Financial planning, accounting, and reporting",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_hr",
+      "department_name": "Human Resources",
+      "department_code": "HR",
+      "description": "Talent acquisition, employee relations, and payroll",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_admin",
+      "department_name": "Administration",
+      "department_code": "ADM",
+      "description": "Office management and general administration",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_sales",
+      "department_name": "Sales",
+      "department_code": "SLS",
+      "description": "Business development, client acquisition, and sales",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_marketing",
+      "department_name": "Marketing",
+      "department_code": "MKT",
+      "description": "Brand management, campaigns, and public relations",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_ops",
+      "department_name": "Operations",
+      "department_code": "OPS",
+      "description": "Day-to-day business operations and logistics",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_cs",
+      "department_name": "Customer Service",
+      "department_code": "CS",
+      "description": "Customer support, feedback, and success",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_it",
+      "department_name": "IT / Technology",
+      "department_code": "IT",
+      "description": "Software engineering, IT infrastructure, and tech support",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_mgmt",
+      "department_name": "Management",
+      "department_code": "MGMT",
+      "description": "Executive leadership and company management",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_legal",
+      "department_name": "Legal / Compliance",
+      "department_code": "LGL",
+      "description": "Legal advisory, regulatory compliance, and governance",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_bd",
+      "department_name": "Business Development",
+      "department_code": "BD",
+      "description": "Strategic partnerships and market expansion",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_procurement",
+      "department_name": "Procurement",
+      "department_code": "PRC",
+      "description": "Sourcing, vendor management, and purchasing",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_product",
+      "department_name": "Product",
+      "department_code": "PROD",
+      "description": "Product management, design, and strategy",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    },
+    {
+      "id": "dept_others",
+      "department_name": "Others",
+      "department_code": "OTH",
+      "description": "General other department grouping",
+      "status": "Active",
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-25T00:00:00Z"
+    }
+  ],
+  "leaveTypes": [
+    {
+      "id": "lt_1",
+      "name": "Annual Leave",
+      "code": "annual",
+      "isPaid": true,
+      "requiresAttachment": false,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 14,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_2",
+      "name": "Sick Leave",
+      "code": "sick",
+      "isPaid": true,
+      "requiresAttachment": true,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 14,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_3",
+      "name": "Childcare Leave",
+      "code": "childcare",
+      "isPaid": true,
+      "requiresAttachment": false,
+      "deductsFromBalance": true,
+      "defaultEntitlement": 6,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_4",
+      "name": "Unpaid Leave",
+      "code": "unpaid",
+      "isPaid": false,
+      "requiresAttachment": false,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 0,
+      "allowHalfDay": true,
+      "isActive": true
+    },
+    {
+      "id": "lt_5",
+      "name": "Hospitalisation Leave",
+      "code": "hospitalisation",
+      "isPaid": true,
+      "requiresAttachment": true,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 60,
+      "allowHalfDay": false,
+      "isActive": true
+    },
+    {
+      "id": "lt_6",
+      "name": "Other Leave",
+      "code": "other",
+      "isPaid": false,
+      "requiresAttachment": false,
+      "deductsFromBalance": false,
+      "defaultEntitlement": 0,
+      "allowHalfDay": true,
+      "isActive": true
+    }
+  ]
+}

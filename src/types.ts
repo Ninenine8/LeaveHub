@@ -123,6 +123,7 @@ export interface AuditLog {
 }
 
 export interface CompanySettings {
+  companyName?: string;
   annualLeaveCarryForwardMax: number;
   carryForwardExpiryMonth: number; // e.g. 3 for March 31st (SG custom)
   prorateNewJoiners: boolean;
@@ -143,6 +144,6 @@ export interface Department {
   department_head_user_id?: string;
   description?: string;
   status: 'Active' | 'Inactive';
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
 }

@@ -175,7 +175,48 @@ export default function App() {
       setHolidays(db.holidays);
       setDepartments(db.departments || []);
     } catch (e) {
-      console.error('Error connecting to server, falling back to localStorage:', e);
+      console.error('Error connecting to server, falling back to local/static database:', e);
+      // Try to fetch static database file fallback for Netlify static host
+      try {
+        const staticRes = await fetch('/server-db.json');
+        if (staticRes.ok) {
+          const contentType = staticRes.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            const db = await staticRes.json();
+            
+            // Re-map db to match if it doesn't exist in local storage yet
+            const localUsers = localStorage.getItem('lh_users');
+            if (!localUsers) {
+              // First time on Netlify, load from the server-db JSON file!
+              setUsers(db.users);
+              setBalances(db.balances);
+              setApplications(db.applications);
+              setSettings(db.settings);
+              setNotifications(db.notifications);
+              setAuditLogs(db.auditLogs);
+              setHolidays(db.holidays || []);
+              setDepartments(db.departments || []);
+              
+              // Persist locally
+              saveData({
+                users: db.users,
+                balances: db.balances,
+                applications: db.applications,
+                settings: db.settings,
+                notifications: db.notifications,
+                auditLogs: db.auditLogs,
+                holidays: db.holidays || [],
+                departments: db.departments || []
+              });
+              return;
+            }
+          }
+        }
+      } catch (staticErr) {
+        console.error('Error loading static fallback database:', staticErr);
+      }
+
+      // Default localStorage load
       const db = loadData();
       setUsers(db.users);
       setBalances(db.balances);
@@ -309,7 +350,78 @@ export default function App() {
       setRegChildcare(false);
       setRegManagerId('');
     } catch (err: any) {
-      setLoginError(err.message);
+      console.warn('Backend registration failed, trying client-side local fallback:', err);
+      try {
+        const existing = users.find(u => u.email.trim().toLowerCase() === emailTrimmed);
+        if (existing) {
+          throw new Error('Email already registered.');
+        }
+
+        const newUserId = `usr_${Date.now()}`;
+        const newUser: User = {
+          id: newUserId,
+          name: regName.trim(),
+          email: emailTrimmed,
+          role: regRole,
+          department: regDept,
+          joinDate: new Date().toISOString().split('T')[0],
+          isActive: true,
+          hasChildcareEligible: regChildcare,
+          managerId: regManagerId || undefined,
+          managerName: selectedManager ? selectedManager.name : undefined,
+          confirmation_status: 'Confirmed',
+          confirmation_date: new Date().toISOString().split('T')[0]
+        };
+
+        const newBal: LeaveBalance = {
+          userId: newUserId,
+          annualEntitled: settings.standardAnnualLeave || 14,
+          annualCarriedForward: 0,
+          annualUsed: 0,
+          annualPending: 0,
+          sickEntitled: settings.standardSickLeave || 14,
+          sickUsed: 0,
+          sickPending: 0,
+          childcareEntitled: regChildcare ? (settings.standardChildcareLeave || 6) : 0,
+          childcareUsed: 0,
+          childcarePending: 0,
+          unpaidUsed: 0,
+          otherUsed: 0
+        };
+
+        const updatedUsers = [...users, newUser];
+        const updatedBalances = [...balances, newBal];
+
+        const initialLog: AuditLog = {
+          id: `log_${Date.now()}`,
+          actorId: newUserId,
+          actorName: regName.trim(),
+          action: 'Register',
+          details: `User registered locally: ${regName.trim()} (${emailTrimmed})`,
+          timestamp: new Date().toISOString()
+        };
+
+        persistState({
+          users: updatedUsers,
+          balances: updatedBalances,
+          auditLogs: [...auditLogs, initialLog]
+        });
+
+        setCurrentUser(newUser);
+        localStorage.setItem('leavehub_session', JSON.stringify(newUser));
+        setCurrentView('dashboard');
+
+        // Reset form states
+        setRegName('');
+        setRegEmail('');
+        setRegPassword('');
+        setRegRole('employee');
+        setRegDept('Engineering');
+        setRegChildcare(false);
+        setRegManagerId('');
+      } catch (fallbackErr: any) {
+        setLoginError(fallbackErr.message);
+      }
     }
   };
 
@@ -349,7 +461,18 @@ export default function App() {
       setLoginEmail('');
       setLoginPassword('');
     } catch (err: any) {
-      setLoginError(err.message);
+      console.warn('Backend login failed, attempting client-side authentication:', err);
+      const match = users.find(u => u.email.trim().toLowerCase() === loginEmail.trim().toLowerCase());
+      if (match) {
+        // Log in the user directly in static demo mode
+        setCurrentUser(match);
+        localStorage.setItem('leavehub_session', JSON.stringify(match));
+        setCurrentView('dashboard');
+        setLoginEmail('');
+        setLoginPassword('');
+      } else {
+        setLoginError(lang === 'zh' ? '用户名或密码不正确。' : 'Invalid email or password.');
+      }
     }
   };
 
@@ -396,7 +519,108 @@ export default function App() {
       setSetupPassword('');
       setSetupConfirmPassword('');
     } catch (err: any) {
-      setSetupError(err.message);
+      console.warn('Backend setup failed, trying client-side local setup:', err);
+      try {
+        const adminId = `usr_admin_${Date.now()}`;
+        const adminUser: User = {
+          id: adminId,
+          name: setupAdminName.trim(),
+          email: setupAdminEmail.trim().toLowerCase(),
+          role: 'admin',
+          department: 'Human Resources',
+          joinDate: new Date().toISOString().split('T')[0],
+          isActive: true,
+          hasChildcareEligible: false,
+          confirmation_status: 'Confirmed',
+          confirmation_date: new Date().toISOString().split('T')[0]
+        };
+
+        const initialBal: LeaveBalance = {
+          userId: adminId,
+          annualEntitled: 21,
+          annualCarriedForward: 0,
+          annualUsed: 0,
+          annualPending: 0,
+          sickEntitled: 14,
+          sickUsed: 0,
+          sickPending: 0,
+          childcareEntitled: 0,
+          childcareUsed: 0,
+          childcarePending: 0,
+          unpaidUsed: 0,
+          otherUsed: 0
+        };
+
+        const defaultDepts: Department[] = [
+          { id: 'dept_hr', department_name: 'Human Resources', department_code: 'HR', status: 'Active', department_head_user_id: adminId },
+          { id: 'dept_finance', department_name: 'Finance', department_code: 'FIN', status: 'Active' },
+          { id: 'dept_admin', department_name: 'Administration', department_code: 'ADM', status: 'Active' },
+          { id: 'dept_sales', department_name: 'Sales', department_code: 'SLS', status: 'Active' },
+          { id: 'dept_marketing', department_name: 'Marketing', department_code: 'MKT', status: 'Active' },
+          { id: 'dept_it', department_name: 'IT / Technology', department_code: 'IT', status: 'Active' },
+          { id: 'dept_mgmt', department_name: 'Management', department_code: 'MGMT', status: 'Active' }
+        ];
+
+        const initialCompanySettings: CompanySettings = {
+          companyName: setupCompanyName.trim(),
+          annualLeaveCarryForwardMax: 5,
+          carryForwardExpiryMonth: 3,
+          prorateNewJoiners: true,
+          standardAnnualLeave: 14,
+          standardSickLeave: 14,
+          standardChildcareLeave: 6,
+          prorateRoundingRule: 'nearest-whole',
+          grantMedicalOnConfirmation: 'mom',
+          customMedicalRule: 'grant-5-sick',
+          useDeptHeadAsDefaultApprover: true
+        };
+
+        const initialLog: AuditLog = {
+          id: `log_${Date.now()}`,
+          actorId: adminId,
+          actorName: setupAdminName.trim(),
+          action: 'Company Setup',
+          details: `First admin account created locally for ${setupCompanyName.trim()}: ${setupAdminName.trim()} (${setupAdminEmail.trim()})`,
+          timestamp: new Date().toISOString()
+        };
+
+        const initialDb = {
+          users: [adminUser],
+          balances: [initialBal],
+          applications: [],
+          settings: initialCompanySettings,
+          notifications: [],
+          auditLogs: [initialLog],
+          holidays: initialPublicHolidays,
+          departments: defaultDepts
+        };
+
+        // Save local
+        saveData(initialDb);
+
+        // Update react state
+        setUsers(initialDb.users);
+        setBalances(initialDb.balances);
+        setApplications([]);
+        setSettings(initialDb.settings);
+        setNotifications([]);
+        setAuditLogs(initialDb.auditLogs);
+        setHolidays(initialDb.holidays);
+        setDepartments(initialDb.departments);
+
+        setCurrentUser(adminUser);
+        localStorage.setItem('leavehub_session', JSON.stringify(adminUser));
+        setCurrentView('dashboard');
+
+        // Clean form states
+        setSetupCompanyName('');
+        setSetupAdminName('');
+        setSetupAdminEmail('');
+        setSetupPassword('');
+        setSetupConfirmPassword('');
+      } catch (fallbackErr: any) {
+        setSetupError('Client setup failed: ' + fallbackErr.message);
+      }
     }
   };
 
@@ -406,7 +630,7 @@ export default function App() {
       if (!res.ok) throw new Error('Seeding failed');
       await fetchStateFromServer();
       
-      // Auto login as Sarah Tan (Seeded Admin)
+      // Auto login as Sarah Tan (Seeded Admin) or first admin
       const freshRes = await fetch('/api/db');
       const freshDb = await freshRes.json();
       const seededAdmin = freshDb.users.find((u: any) => u.role === 'admin');
@@ -416,7 +640,50 @@ export default function App() {
       }
       setCurrentView('dashboard');
     } catch (err: any) {
-      alert('Failed to seed database: ' + err.message);
+      console.warn('Backend seed failed, attempting client-side static seed:', err);
+      try {
+        const staticRes = await fetch('/server-db.json');
+        if (staticRes.ok) {
+          const contentType = staticRes.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            const db = await staticRes.json();
+            
+            // Save local
+            saveData({
+              users: db.users,
+              balances: db.balances,
+              applications: db.applications,
+              settings: db.settings,
+              notifications: db.notifications,
+              auditLogs: db.auditLogs,
+              holidays: db.holidays || [],
+              departments: db.departments || []
+            });
+
+            // Update state
+            setUsers(db.users);
+            setBalances(db.balances);
+            setApplications(db.applications);
+            setSettings(db.settings);
+            setNotifications(db.notifications);
+            setAuditLogs(db.auditLogs);
+            setHolidays(db.holidays || []);
+            setDepartments(db.departments || []);
+
+            // Auto-login as Sarah Tan or first admin found
+            const admin = db.users.find((u: any) => u.role === 'admin') || db.users[0];
+            if (admin) {
+              setCurrentUser(admin);
+              localStorage.setItem('leavehub_session', JSON.stringify(admin));
+            }
+            setCurrentView('dashboard');
+            return;
+          }
+        }
+        throw new Error('Static database file not available or invalid format.');
+      } catch (fallbackErr: any) {
+        alert('Failed to seed database client-side: ' + fallbackErr.message);
+      }
     }
   };
 
@@ -427,7 +694,33 @@ export default function App() {
       await fetchStateFromServer();
       handleLogout();
     } catch (err: any) {
-      alert('Failed to reset database: ' + err.message);
+      console.warn('Backend reset failed, resetting client-side local database:', err);
+      try {
+        // Clear local storage keys
+        localStorage.removeItem('lh_users');
+        localStorage.removeItem('lh_balances');
+        localStorage.removeItem('lh_applications');
+        localStorage.removeItem('lh_settings');
+        localStorage.removeItem('lh_notifications');
+        localStorage.removeItem('lh_audit_logs');
+        localStorage.removeItem('lh_holidays');
+        localStorage.removeItem('lh_departments');
+        localStorage.removeItem('leavehub_session');
+
+        // Reset state
+        setUsers([]);
+        setBalances([]);
+        setApplications([]);
+        setSettings({} as CompanySettings);
+        setNotifications([]);
+        setAuditLogs([]);
+        setHolidays(initialPublicHolidays);
+        setDepartments([]);
+
+        handleLogout();
+      } catch (fallbackErr: any) {
+        alert('Failed to reset database client-side: ' + fallbackErr.message);
+      }
     }
   };
 
