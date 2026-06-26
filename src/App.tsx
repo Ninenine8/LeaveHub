@@ -180,13 +180,18 @@ export default function App() {
       try {
         const staticRes = await fetch('/server-db.json');
         if (staticRes.ok) {
-          const contentType = staticRes.headers.get('content-type');
-          if (contentType && contentType.includes('application/json')) {
-            const db = await staticRes.json();
-            
-            // Re-map db to match if it doesn't exist in local storage yet
-            const localUsers = localStorage.getItem('lh_users');
-            if (!localUsers) {
+          const db = await staticRes.json();
+          if (db && Array.isArray(db.users) && db.users.length > 0) {
+            // Re-map db to match if it doesn't exist in local storage yet or is empty
+            const localUsersStr = localStorage.getItem('lh_users');
+            let localUsers: any[] = [];
+            try {
+              if (localUsersStr) {
+                localUsers = JSON.parse(localUsersStr);
+              }
+            } catch (err) {}
+
+            if (!localUsersStr || !Array.isArray(localUsers) || localUsers.length === 0) {
               // First time on Netlify, load from the server-db JSON file!
               setUsers(db.users);
               setBalances(db.balances);
@@ -644,10 +649,8 @@ export default function App() {
       try {
         const staticRes = await fetch('/server-db.json');
         if (staticRes.ok) {
-          const contentType = staticRes.headers.get('content-type');
-          if (contentType && contentType.includes('application/json')) {
-            const db = await staticRes.json();
-            
+          const db = await staticRes.json();
+          if (db && Array.isArray(db.users)) {
             // Save local
             saveData({
               users: db.users,
